@@ -1,0 +1,9 @@
+.vscode
+.idea
+
+env/
+.pylintric
+__pycache__/
+
+db.sqlite3
+media/
