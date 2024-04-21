@@ -68,8 +68,8 @@
                             
     <div class="entry__thumb">
         <a href="{% url "blog:post_detail" post.id %}" class="entry__thumb-link">
-            <img src="{% static "images/thumbs/masonry/guitarist-600.jpg" %}" 
-                    srcset="{% static "images/thumbs/masonry/guitarist-600.jpg" %} 1x, {% static "images/thumbs/masonry/guitarist-1200.jpg" %} 2x" alt="">
+            <img src="{{ post.preview.url }}" alt='Post Image'>
+                    {% comment %} srcset="{% static "images/thumbs/masonry/guitarist-600.jpg" %} 1x, {% static "images/thumbs/masonry/guitarist-1200.jpg" %} 2x" alt=""> {% endcomment %}
         </a>
     </div>
 

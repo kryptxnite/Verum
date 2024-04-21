@@ -12,10 +12,10 @@
 
             <div class="media-wrap entry__media">
                 <div class="entry__post-thumb">
-                    <img src="{% static "images/thumbs/single/standard/standard-1000.jpg" %}" srcset="{% static "images/thumbs/single/standard/standard-2000.jpg" %} 2000w, 
+                    <img src="{{ post.thematic_picture.url }}" {% comment %} srcset="{% static "images/thumbs/single/standard/standard-2000.jpg" %} 2000w, 
                     {% static "images/thumbs/single/standard/standard-1000.jpg" %} 1000w, 
                     {% static "images/thumbs/single/standard/standard-500.jpg" %} 500w"
-                        sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+                        sizes="(max-width: 2000px) 100vw, 2000px"{% endcomment %} alt=""> 
                 </div>
             </div>
 
