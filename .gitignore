@@ -1,15 +1,23 @@
-# python stuff
+# python
 env/
-.pylintrc
+venv/
 __pycache__/
+*.py[cod]
 
-# ide stuff
+# IDE
 .vscode/
 .idea/
 
-# django stuff
+# Django
 db.sqlite3
+*.log
 media/
+staticfiles/
+.env
 
-# other stuff
+# OS
+.DS_Store
+Thumbs.db
+
+# Theme / front-end
 Typerite/
