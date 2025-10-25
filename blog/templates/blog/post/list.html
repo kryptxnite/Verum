@@ -18,7 +18,7 @@
             {% for post in posts %}
             <article class="masonry__brick entry format-standard animate-this">
                 <div class="entry__thumb">
-                    <a href="{% url "blog:post_detail" post.id %}" class="entry__thumb-link">
+                    <a href="{{ post.get_absolute_url}}" class="entry__thumb-link">
                         <img src="{% static "deps/images/thumbs/masonry/woodcraft-600.jpg" %}" alt="">
                     </a>
                 </div>
@@ -26,21 +26,21 @@
                 <div class="entry__text">
                     <div class="entry__header">
 
-                        <h2 class="entry__title"><a href="single-standard.html">{{ post.title }}</a></h2>
+                        <h2 class="entry__title"><a href="{{ post.get_absolute_url}}">{{ post.title }}</a></h2>
                         <div class="entry__meta">
                             <span class="entry__meta-cat">
                                 <a href="category.html">Design</a> 
                                 <a href="category.html">Photography</a>
                             </span>
                             <span class="entry__meta-date">
-                                <a href="single-standard.html">{{ post.publish }}</a>
+                                <a href="{{ post.get_absolute_url}}">{{ post.publish }}</a>
                             </span>
                         </div>
                         
                     </div>
                     <div class="entry__excerpt">
                         <p>
-                        {{ post.body }}
+                        {{ post.body|truncatewords:30|linebreaks }}
                         </p>
                     </div>
                 </div>

@@ -35,7 +35,7 @@
 
 <body>
 
-    {% comment %} <!-- preloader
+    <!-- preloader
     ================================================== -->
     <div id="preloader">
         <div id="loader" class="dots-fade">
@@ -43,7 +43,7 @@
             <div></div>
             <div></div>
         </div>
-    </div> {% endcomment %}
+    </div>
 
     <div id="top" class="s-wrap site-wrapper">
 
@@ -86,6 +86,7 @@
                     <li><a href="styles.html" title="">Styles</a></li>
                     <li><a href="page-about.html" title="">About</a></li>
                     <li><a href="page-contact.html" title="">Contact</a></li>
+                    <li><a href="{% url "admin:index" %}" title="">Admin</a></li>
                 </ul> <!-- end header__nav -->
 
                 <ul class="header__social">
