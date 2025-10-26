@@ -1,11 +1,16 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post, Category
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+def posts(request, category_slug=None):
+    posts = Post.published.all()
+    category = None
 
-def post_list(request):
-    post_list = Post.published.all()
-    paginator = Paginator(post_list, 3)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        posts = posts.filter(category=category)
+
+    paginator = Paginator(posts, 3)
     page_number = request.GET.get('page', 1)
     try:
         posts = paginator.page(page_number)
@@ -15,7 +20,8 @@ def post_list(request):
         posts = paginator.page(paginator.num_pages)
     return render(request,
                   'blog/post/list.html',
-                  {'posts': posts})
+                  {'posts': posts,
+                   'category': category})
 
 
 def post_detail(request, post):
