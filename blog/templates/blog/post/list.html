@@ -19,7 +19,8 @@
             <article class="masonry__brick entry format-standard animate-this">
                 <div class="entry__thumb">
                     <a href="{{ post.get_absolute_url}}" class="entry__thumb-link">
-                        <img src="{% static "deps/images/thumbs/masonry/woodcraft-600.jpg" %}" alt="">
+                        <img src="{% if post.preview_image %}{{ post.preview_image.url }}
+                        {% else %}{% static "deps/images/no_image_found.webp" %}{% endif %}" alt="{{ post.title }}">
                     </a>
                 </div>
 

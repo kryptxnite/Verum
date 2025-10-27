@@ -10,7 +10,7 @@ def posts(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         posts = posts.filter(category=category)
 
-    paginator = Paginator(posts, 3)
+    paginator = Paginator(posts, 6)
     page_number = request.GET.get('page', 1)
     try:
         posts = paginator.page(page_number)

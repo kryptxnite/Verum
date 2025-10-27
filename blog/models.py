@@ -33,6 +33,8 @@ class Post(models.Model):
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
                                related_name='blog_posts')
+    preview_image = models.ImageField(upload_to='previews/', blank=True, null=True)
+    header_image = models.ImageField(upload_to='headers/', blank=True, null=True)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     publish = models.DateTimeField(default=timezone.now)

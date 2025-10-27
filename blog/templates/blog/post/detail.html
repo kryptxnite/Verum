@@ -14,7 +14,9 @@
 
             <div class="media-wrap entry__media">
                 <div class="entry__post-thumb">
-                    <img src="{% static "deps/images/thumbs/single/standard/standard-1000.jpg" %}" alt="">
+                    {% if post.header_image %}
+                        <img src="{{ post.header_image.url }}" alt="{{ post.title }}">
+                    {% endif %}
                 </div>
             </div>
 
