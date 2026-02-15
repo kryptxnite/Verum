@@ -30,7 +30,7 @@
                         <h2 class="entry__title"><a href="{{ post.get_absolute_url}}">{{ post.title }}</a></h2>
                         <div class="entry__meta">
                             <span class="entry__meta-cat">
-                                <a href="category.html">{{ post.category }}</a>
+                                <a href="{% url "blog:post_category_list" post.category.slug %}">{{ post.category }}</a>
                             </span>
                             <span class="entry__meta-date">
                                 <a href="{{ post.get_absolute_url}}">{{ post.publish }}</a>
