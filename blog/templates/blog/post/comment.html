@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Add a comment{% endblock %}
+
+
+{% block content %}
+
+<div class="column large-12 comment-respond">
+
+    <!-- START respond -->
+    <div id="respond">
+    {% if comment %}
+        <h3 class="h2">Your comment has been added.</h3>
+        <p><a href="{{ post.get_absolute_url }}">Back to the post</a></p>
+    {% else %}
+        {% include 'blog/post/include/comment_form.html' %}
+    {% endif %}
+    </div>
+    <!-- END respond-->
+
+</div> <!-- end comment-respond -->
+
+
+{% endblock %}
