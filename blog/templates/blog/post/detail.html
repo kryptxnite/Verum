@@ -9,7 +9,6 @@
 ================================================== -->
 <div class="s-content content">
     <main class="row content__page">
-        
         <article class="column large-full entry format-standard">
 
             <div class="media-wrap entry__media">
@@ -26,7 +25,7 @@
                     <li class="author">By <a href="#0">{{ post.author }}</a></li>
                     <li class="date">{{ post.publish }}</li>
                     <li class="cat-links">
-                        <a href="{% url "blog:post_category_list" post.category.slug %}">{{ post.category }}
+                        <a href="{% url "blog:post_category_list" post.category.slug %}">{{ post.category }}</a>
                     </li>
                 </ul>
             </div> <!-- end entry__header -->
@@ -82,6 +81,7 @@
         </article> <!-- end column large-full entry-->
 
 
+
         <div class="comments-wrap">
 
             <div id="comments" class="column large-12">
@@ -89,21 +89,17 @@
                     <h3 class="h2">{{ total_comments }} Comment{{ total_comments|pluralize }}</h3>
                 {% endwith %}
 
-                <!-- START commentlist -->
-                
-                <ol class="commentlist">
+                <ol class="commentlist"><!-- START commentlist -->
 
+                    {% for comment in comments %}
                     <li class="depth-1 comment">
-
-                        <!-- <div class="comment__avatar">
-                            <img class="avatar" src="{% static "images/avatars/user-01.jpg" %}" alt="" width="50" height="50">
-                        </div> -->
-                        {% for comment in comments %}
+                        <hr>
+                        <div class="comment__avatar">
+                            <img class="avatar" src="{% static "/deps/images/avatars/person.jpg" %}" alt="" width="50" height="50">
+                        </div>
                         <div class="comment__content">
-
                             <div class="comment__info">
                                 <div class="comment__author">{{ comment.name }}</div>
-
                                 <div class="comment__meta">
                                     <div class="comment__time">{{ comment.created }}</div>
                                     <!-- <div class="comment__reply">
@@ -111,22 +107,18 @@
                                     </div> -->
                                 </div>
                             </div>
-
                             <div class="comment__text">
                             <p>{{ comment.body|linebreaks }}</p>
                             </div>
-
                         </div>
-                        {% empty %}
-                            <p>There are no comments.</p>
-                        {% endfor %}
-
+                        
                     </li> <!-- end comment level 1 -->
 
+                    {% empty %}
+                        <p>There are no comments.</p>
+                    {% endfor %}
                 
-                </ol>
-                
-                <!-- END commentlist -->
+                </ol><!-- END commentlist -->
 
             </div> <!-- end comments -->
 

@@ -3390,6 +3390,7 @@ body.search-is-visible {
 .comments-wrap {
     padding          : 6.4rem 0 0 0;
     background-color : #ffffff;
+    width: 100%;
 }
 
 .comments-wrap h3 {
@@ -3464,7 +3465,7 @@ body.search-is-visible {
     display     : block;
     color       : #7e7e7e;
     text-align  : right;
-    width       : 150px;
+    width       : 200px;
     position    : absolute;
     top         : 0;
     right       : 0;

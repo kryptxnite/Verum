@@ -1,22 +1,45 @@
 <h3 class="h2">Add Comment <span>Your email address will not be published</span></h3>
     
-<form name="contactForm" id="contactForm" method="post" action="{% url "blog:post_comment" post.id %}" autocomplete="off">
-    <!-- <fieldset>
+<form name="contactForm"
+      id="contactForm"
+      method="post"
+      action="{% url 'blog:post_comment' post.id %}"
+      autocomplete="off">
+
+    {% csrf_token %}
+
+    <fieldset>
 
         <div class="form-field">
-            <input name="cName" id="cName" class="full-width" placeholder="Your Name" value="" type="text">
+            {{ form.name }}
+            {% if form.name.errors %}
+                <span class="error">{{ form.name.errors }}</span>
+            {% endif %}
         </div>
 
         <div class="form-field">
-            <input name="cEmail" id="cEmail" class="full-width" placeholder="Your Email" value="" type="text">
+            {{ form.email }}
+            {% if form.email.errors %}
+                <span class="error">{{ form.email.errors }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-field">
+            {{ form.website }}
         </div>
 
         <div class="message form-field">
-            <textarea name="cMessage" id="cMessage" class="full-width" placeholder="Your Message"></textarea>
+            {{ form.body }}
+            {% if form.body.errors %}
+                <span class="error">{{ form.body.errors }}</span>
+            {% endif %}
         </div>
 
-    </fieldset> -->
-    {{ form.as_p }}
-    {% csrf_token %}
-    <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large full-width" value="Add Comment" type="submit">
-</form> <!-- end form -->
+        <input name="submit"
+               id="submit"
+               class="btn btn--primary btn-wide btn--large full-width"
+               value="Add Comment"
+               type="submit">
+
+    </fieldset>
+</form>

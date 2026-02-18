@@ -4,21 +4,18 @@
 
 
 {% block content %}
-
-<div class="column large-12 comment-respond">
-
-    <!-- START respond -->
-    <div id="respond">
-    {% if comment %}
-        <h3 class="h2">Your comment has been added.</h3>
-        <p><a href="{{ post.get_absolute_url }}">Back to the post</a></p>
-    {% else %}
-        {% include 'blog/post/include/comment_form.html' %}
-    {% endif %}
-    </div>
-    <!-- END respond-->
-
-</div> <!-- end comment-respond -->
-
-
+<div class="s-content content">
+    <main class="row content__page">
+        <article class="column large-full entry format-standard">
+            <div class="content__page-header entry__header">
+                {% if comment %}
+                    <h1 class="">Your comment has been added.</h1>
+                    <p><a href="{{ post.get_absolute_url }}">Back to the post</a></p>
+                {% else %}
+                    {% include 'blog/post/includes/comment_form.html' %}
+                {% endif %}
+            </div> <!-- end entry__header -->
+        </article> <!-- end column large-full entry-->
+    </main>
+</div> <!-- end s-content -->
 {% endblock %}
