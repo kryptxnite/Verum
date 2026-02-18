@@ -9,12 +9,17 @@
 <!-- site content
 ================================================== -->
 <div class="s-content">
+    {% if tag %}
+        <h2>#{{ tag.name }}</h2>
+    {% endif %}
     
     <div class="masonry-wrap">
 
         <div class="masonry">
 
             <div class="grid-sizer"></div>
+
+            
 
             {% for post in posts %}
             <article class="masonry__brick entry format-standard animate-this">

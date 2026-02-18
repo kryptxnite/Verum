@@ -35,6 +35,18 @@
 
                 <div class="lead drop-cap">{{ post.body|markdown }}</div>
 
+                <p class="entry__tags">
+                    <span>Post Tags</span>
+
+                    <span class="entry__tag-list">
+                        {% for tag in post.tags.all %}
+                            <a href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
+                        {% endfor %}
+                        <!-- <a href="#0">lectus</a> -->
+                    </span>
+    
+                </p>
+
             </div> <!-- end entry content -->
 
             <div class="entry__pagenav">

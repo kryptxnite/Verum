@@ -3,14 +3,20 @@ from .models import Post, Category, Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import CommentForm
 from django.views.decorators.http import require_POST
+from taggit.models import Tag
 
-def posts(request, category_slug=None):
+def posts(request, category_slug=None, tag_slug=None):
     posts = Post.published.all()
     category = None
+    tag = None
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         posts = posts.filter(category=category)
+
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        posts = posts.filter(tags__in=[tag])
 
     paginator = Paginator(posts, 6)
     page_number = request.GET.get('page', 1)
@@ -23,7 +29,8 @@ def posts(request, category_slug=None):
     return render(request,
                   'blog/post/list.html',
                   {'posts': posts,
-                   'category': category})
+                   'category': category,
+                   'tag': tag,})
 
 
 def post_detail(request, post):
