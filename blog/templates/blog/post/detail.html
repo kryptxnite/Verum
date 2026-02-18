@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 
 {% load static %}
+{% load blog_tags %}
 
 {% block title %}{{ post.title }}{% endblock  %}
 
@@ -32,7 +33,7 @@
 
             <div class="entry__content">
 
-                <p class="lead drop-cap">{{ post.body }}</p>
+                <div class="lead drop-cap">{{ post.body|markdown }}</div>
 
             </div> <!-- end entry content -->
 

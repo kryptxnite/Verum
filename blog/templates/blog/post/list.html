@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 
 {% load static %}
+{% load blog_tags %}
 
 {% block title %}Verum{% endblock  %}
 
@@ -40,7 +41,7 @@
                     </div>
                     <div class="entry__excerpt">
                         <p>
-                        {{ post.body|truncatewords:15|linebreaks }}
+                        {{ post.body|markdown|truncatewords:10|linebreaks }}
                         </p>
                     </div>
                 </div>
