@@ -35,17 +35,17 @@
 
                 <div class="lead drop-cap">{{ post.body|markdown }}</div>
 
+                {% if post.tags.all %}
                 <p class="entry__tags">
                     <span>Post Tags</span>
-
                     <span class="entry__tag-list">
                         {% for tag in post.tags.all %}
                             <a href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
                         {% endfor %}
                         <!-- <a href="#0">lectus</a> -->
                     </span>
-    
                 </p>
+                {% endif %}
 
             </div> <!-- end entry content -->
 
