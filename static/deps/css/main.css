@@ -90,9 +90,9 @@ body.nav-wrap-is-visible {
     overflow : hidden;
 }
 
-body.ss-bg-white {
+/* body.ss-bg-white {
     background : #ffffff;
-}
+} */
 
 /* ------------------------------------------------------------------- 
  * ## links
@@ -3307,6 +3307,8 @@ body.search-is-visible {
 
 .related__link img {
     vertical-align : bottom;
+    height: 400px;
+    border-radius: 5px;
 }
 
 .related__link::before {
@@ -3389,7 +3391,6 @@ body.search-is-visible {
  * ------------------------------------------------------------------- */
 .comments-wrap {
     padding          : 6.4rem 0 0 0;
-    background-color : #ffffff;
     width: 100%;
 }
 

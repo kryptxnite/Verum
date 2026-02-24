@@ -66,30 +66,23 @@
                 </div>
             </div> <!-- end entry__pagenav -->
 
+            {% if similar_posts%}
             <div class="entry__related">
                 <h3 class="h2">Related Articles</h3>
 
                 <ul class="related">
-                    <li class="related__item">
-                        <a href="single-standard.html" class="related__link">
-                            <img src="{% static "deps/images/thumbs/masonry/walk-600.jpg" %}" alt="">
-                        </a>
-                        <h5 class="related__post-title">Using Repetition and Patterns in Photography.</h5>
-                    </li>
-                    <li class="related__item">
-                        <a href="single-standard.html" class="related__link">
-                            <img src="{% static "deps/images/thumbs/masonry/dew-600.jpg" %}" alt="">
-                        </a>
-                        <h5 class="related__post-title">Health Benefits Of Morning Dew.</h5>
-                    </li>
-                    <li class="related__item">
-                        <a href="single-standard.html" class="related__link">
-                            <img src="{% static "deps/images/thumbs/masonry/rucksack-600.jpg" %}" alt="">
-                        </a>
-                        <h5 class="related__post-title">The Art Of Visual Storytelling.</h5>
-                    </li>
+                    {% for post in similar_posts %}
+                        <li class="related__item">
+                            <a href="{{ post.get_absolute_url }}" class="related__link">
+                                <img src="{% if post.preview_image %}{{ post.preview_image.url }}
+                                {% else %}{% static "deps/images/no_image_found.webp" %}{% endif %}" alt="{{ post.title }}">
+                            </a>
+                            <h5 class="related__post-title" href="{{ post.get_absolute_url }}">{{ post.title }}</h5>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div> <!-- end entry related -->
+            {% endif %}
 
         </article> <!-- end column large-full entry-->
 
