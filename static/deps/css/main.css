@@ -3307,8 +3307,7 @@ body.search-is-visible {
 
 .related__link img {
     vertical-align : bottom;
-    height: 400px;
-    border-radius: 5px;
+    height: 260px;
 }
 
 .related__link::before {
