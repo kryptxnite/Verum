@@ -144,3 +144,11 @@ def post_search(request):
             'results': results
         }
     )
+
+
+
+def about(request):
+    return render(request, 'blog/post/about.html')
+
+def contact(request):
+    return render(request, 'blog/post/contact.html')

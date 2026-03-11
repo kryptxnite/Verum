@@ -8,7 +8,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock  %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -74,8 +74,8 @@
                         {% endfor %}
                         </ul>
                     </li>
-                    <li><a href="page-about.html" title="">About</a></li>
-                    <li><a href="page-contact.html" title="">Contact</a></li>
+                    <li><a href="{% url "blog:about" %}" title="">About</a></li>
+                    <li><a href="{% url "blog:contact" %}" title="">Contact</a></li>
                     {% if request.user.is_staff %}
                         <li><a href="{% url "admin:index" %}" title="">Admin Panel</a></li>
                     {% endif %}

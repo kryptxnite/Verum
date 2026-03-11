@@ -1,0 +1,53 @@
+{% extends "blog/base.html" %}
+
+{% load static %}
+{% load blog_tags %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<!-- site content
+================================================== -->
+<div class="s-content content">
+    <main class="row content__page">
+        
+        <section class="column large-full entry format-standard">
+
+            <div class="media-wrap">
+                <div>
+                    <img src="{% static "deps/images/thumbs/about/about-1000.jpg" %}" srcset="{% static "deps/images/thumbs/about/about-2000.jpg" %} 2000w, 
+                                {% static "deps/images/thumbs/about/about-1000.jpg" %} 1000w, 
+                                {% static "deps/images/thumbs/about/about-500.jpg" %} 500w" sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+                </div>
+            </div>
+
+            <div class="content__page-header">
+                <h1 class="display-1">
+                About This Project
+                </h1>
+            </div> <!-- end content__page-header -->
+
+            <p class="lead drop-cap">
+            This website is a blog platform built using Django, designed to showcase 
+            backend development skills, including content management, tagging, search,
+            and markdown support.
+            </p>
+
+            <p>
+            The project was created to demonstrate practical applications of Django 
+            for managing and delivering content efficiently.
+            </p>
+
+            <p>
+            Special thanks to the creators of the <span><a href="https://www.styleshout.com/">StyleShout</a></span>
+            template for providing such a clean and free design, which made building this site much easier.</p>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div> <!-- end s-content -->
+{% endblock %}
