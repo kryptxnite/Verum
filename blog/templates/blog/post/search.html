@@ -1,0 +1,101 @@
+{% extends "blog/base.html" %}
+
+{% load static %}
+{% load blog_tags %}
+
+{% block title %}Search{% endblock  %}
+
+{% block content %}
+<!-- site content
+================================================== -->
+{% if query %}
+<div class="s-content">
+
+    <h1>Posts containing "{{ query }}"</h1>
+    <h3>
+        {% with results.count as total_results %}
+            Found {{ total_results }} result{{ total_results|pluralize }}
+        {% endwith %}
+    </h3>
+    
+    <div class="masonry-wrap">
+        
+        <div class="masonry">
+
+            <div class="grid-sizer"></div>
+
+            
+            
+
+            {% for post in results %}
+            <article class="masonry__brick entry format-standard animate-this">
+                <div class="entry__thumb">
+                    <a href="{{ post.get_absolute_url}}" class="entry__thumb-link">
+                        <img src="{% if post.preview_image %}{{ post.preview_image.url }}
+                        {% else %}{% static "deps/images/no_image_found.webp" %}{% endif %}" alt="{{ post.title }}">
+                    </a>
+                </div>
+
+                <div class="entry__text">
+                    <div class="entry__header">
+                        
+                        <h2 class="entry__title"><a href="{{ post.get_absolute_url}}">{{ post.title }}</a></h2>
+                        <div class="entry__meta">
+                            <span class="entry__meta-cat">
+                                <a href="{% url "blog:post_category_list" post.category.slug %}">{{ post.category }}</a>
+                            </span>
+                            <span class="entry__meta-date">
+                                <a href="{{ post.get_absolute_url}}">{{ post.publish }}</a>
+                            </span>
+                        </div>
+                        
+                    </div>
+                    <div class="entry__excerpt">
+                        <p>
+                            {{ post.body|markdown|truncatewords:10|linebreaks }}
+                        </p>
+                    </div>
+                </div>
+                
+            </article> <!-- end article -->
+            {% empty %}
+                <p>No results found.</p>
+            {% endfor %}
+            
+            
+        </div> <!-- end masonry -->
+        
+    </div> <!-- end masonry-wrap -->
+
+
+    <!-- site pagination
+    ================================================== -->
+    <!-- {% if posts %}
+    <div class="row">
+        <div class="column large-full">
+            <nav class="pgn">
+                <ul>
+
+                    {% if posts.has_previous %}
+                    <li><a class="pgn__prev" href="?page={{ posts.previous_page_number }}">Prev</a></li>
+                    {% endif %}
+                    
+                    {% for page in posts.paginator.page_range %}
+                    {% if page >= posts.number|add:-2 and page <= posts.number|add:+3 %}
+                    <li><a class="pgn__num {% if posts.number == page %}current{% endif %}" href="?page={{ page }}">{{ page }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% comment %} <li><span class="pgn__num dots">…</span></li> {% endcomment %}
+
+                    {% if posts.has_next %}
+                    <li><a class="pgn__next" href="?page={{ posts.next_page_number }}">Next</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {% endif %} -->
+
+</div> <!-- end s-content -->
+{% endif %}
+{% endblock  %}

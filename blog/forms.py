@@ -23,3 +23,7 @@ class CommentForm(forms.ModelForm):
                 'name': 'cMessage'
             }),
         }
+
+
+class SearchForm(forms.Form):
+    query = forms.CharField()

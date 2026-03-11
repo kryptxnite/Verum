@@ -2165,6 +2165,10 @@ input::-moz-focus-inner {
  * ------------------------------------------------------------------- */
 .s-wrap {
     position : relative;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .s-header {
@@ -2986,6 +2990,8 @@ body.search-is-visible {
     line-height    : 2.4rem;
     color          : rgba(0, 0, 0, 0.5);
     text-align     : center;
+
+    margin-top: auto;
 }
 
 .s-footer a {
