@@ -11,21 +11,13 @@
 {% if query %}
 <div class="s-content">
 
-    <h1>Posts containing "{{ query }}"</h1>
-    <h3>
-        {% with results.count as total_results %}
-            Found {{ total_results }} result{{ total_results|pluralize }}
-        {% endwith %}
-    </h3>
+    <h1>Search results for "{{ query }}"</h1>
     
     <div class="masonry-wrap">
         
         <div class="masonry">
 
             <div class="grid-sizer"></div>
-
-            
-            
 
             {% for post in results %}
             <article class="masonry__brick entry format-standard animate-this">
@@ -52,11 +44,10 @@
                     </div>
                     <div class="entry__excerpt">
                         <p>
-                            {{ post.body|markdown|truncatewords:10|linebreaks }}
+                            {{ post.headline|safe }}
                         </p>
                     </div>
-                </div>
-                
+                </div>  
             </article> <!-- end article -->
             {% empty %}
                 <p>No results found.</p>
