@@ -11,7 +11,6 @@
 <div class="s-content content">
     <main class="row content__page">
         <article class="column large-full entry format-standard">
-
             <div class="media-wrap entry__media">
                 <div class="entry__post-thumb">
                     {% if post.header_image %}
@@ -19,7 +18,6 @@
                     {% endif %}
                 </div>
             </div>
-
             <div class="content__page-header entry__header">
                 <h1 class="display-1 entry__title">{{ post.title }}</h1>
                 <ul class="entry__header-meta">
@@ -30,25 +28,20 @@
                     </li>
                 </ul>
             </div> <!-- end entry__header -->
-
             <div class="entry__content">
-
                 <div class="lead drop-cap">{{ post.body|markdown }}</div>
-
                 {% if post.tags.all %}
-                <p class="entry__tags">
-                    <span>Post Tags</span>
-                    <span class="entry__tag-list">
-                        {% for tag in post.tags.all %}
-                            <a href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
-                        {% endfor %}
-                        <!-- <a href="#0">lectus</a> -->
-                    </span>
-                </p>
+                    <p class="entry__tags">
+                        <span>Post Tags</span>
+                        <span class="entry__tag-list">
+                            {% for tag in post.tags.all %}
+                                <a href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
+                            {% endfor %}
+                            <!-- <a href="#0">lectus</a> -->
+                        </span>
+                    </p>
                 {% endif %}
-
             </div> <!-- end entry content -->
-
             <div class="entry__pagenav">
                 <div class="entry__nav">
                     <div class="entry__prev">
@@ -65,73 +58,55 @@
                     </div>
                 </div>
             </div> <!-- end entry__pagenav -->
-
             {% if similar_posts%}
-            <div class="entry__related">
-                <h3 class="h2">Related Articles</h3>
-
-                <ul class="related">
-                    {% for post in similar_posts %}
-                        <li class="related__item">
-                            <a href="{{ post.get_absolute_url }}" class="related__link">
-                                <img src="{% if post.preview_image %}{{ post.preview_image.url }}
-                                {% else %}{% static "deps/images/no_image_found.webp" %}{% endif %}" alt="{{ post.title }}">
-                            </a>
-                            <h5 class="related__post-title" href="{{ post.get_absolute_url }}">{{ post.title }}</h5>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div> <!-- end entry related -->
+                <div class="entry__related">
+                    <h3 class="h2">Related Articles</h3>
+                    <ul class="related">
+                        {% for post in similar_posts %}
+                            <li class="related__item">
+                                <a href="{{ post.get_absolute_url }}" class="related__link">
+                                    <img src="{% if post.preview_image %}{{ post.preview_image.url }}
+                                    {% else %}{% static "deps/images/no_image_found.webp" %}{% endif %}" alt="{{ post.title }}">
+                                </a>
+                                <h5 class="related__post-title" href="{{ post.get_absolute_url }}">{{ post.title }}</h5>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div> <!-- end entry related -->
             {% endif %}
-
         </article> <!-- end column large-full entry-->
 
-
-
         <div class="comments-wrap">
-
             <div id="comments" class="column large-12">
                 {% with comments.count as total_comments %}
                     <h3 class="h2">{{ total_comments }} Comment{{ total_comments|pluralize }}</h3>
                 {% endwith %}
-
                 <ol class="commentlist"><!-- START commentlist -->
-
                     {% for comment in comments %}
-                    <li class="depth-1 comment">
-                        <hr>
-                        <div class="comment__avatar">
-                            <img class="avatar" src="{% static "/deps/images/avatars/person.jpg" %}" alt="" width="50" height="50">
-                        </div>
-                        <div class="comment__content">
-                            <div class="comment__info">
-                                <div class="comment__author">{{ comment.name }}</div>
-                                <div class="comment__meta">
-                                    <div class="comment__time">{{ comment.created }}</div>
-                                    <!-- <div class="comment__reply">
-                                        <a class="comment-reply-link" href="#0">Reply</a>
-                                    </div> -->
+                        <li class="depth-1 comment">
+                            <hr>
+                            <div class="comment__avatar">
+                                <img class="avatar" src="{% static "/deps/images/avatars/person.jpg" %}" alt="" width="50" height="50">
+                            </div>
+                            <div class="comment__content">
+                                <div class="comment__info">
+                                    <div class="comment__author">{{ comment.name }}</div>
+                                    <div class="comment__meta">
+                                        <div class="comment__time">{{ comment.created }}</div>
+                                    </div>
+                                </div>
+                                <div class="comment__text">
+                                <p>{{ comment.body|linebreaks }}</p>
                                 </div>
                             </div>
-                            <div class="comment__text">
-                            <p>{{ comment.body|linebreaks }}</p>
-                            </div>
-                        </div>
-                        
-                    </li> <!-- end comment level 1 -->
-
+                        </li> <!-- end comment level 1 -->
                     {% empty %}
                         <p>There are no comments.</p>
                     {% endfor %}
-                
                 </ol><!-- END commentlist -->
-
             </div> <!-- end comments -->
-
             {% include "blog/post/includes/comment_form.html"%}<!-- end comment-respond -->
-    
         </div> <!-- end comments-wrap -->
     </main>
-
 </div> <!-- end s-content -->
 {% endblock  %}

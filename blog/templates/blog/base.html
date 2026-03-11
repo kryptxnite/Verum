@@ -1,5 +1,4 @@
 {% load static %}
-
 {% load blog_tags %}
 
 <!DOCTYPE html>
@@ -37,7 +36,7 @@
 </head>
 
 <body class="ss-bg-white">
-
+    
     <!-- preloader
     ================================================== -->
     <div id="preloader">
@@ -75,19 +74,11 @@
                         {% endfor %}
                         </ul>
                     </li>
-                    <li class="has-children">
-                        <a href="#0" title="">Blog Posts</a>
-                        <ul class="sub-menu">
-                        <li><a href="single-video.html">Video Post</a></li>
-                        <li><a href="single-audio.html">Audio Post</a></li>
-                        <li><a href="single-gallery.html">Gallery Post</a></li>
-                        <li><a href="single-standard.html">Standard Post</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="styles.html" title="">Styles</a></li>
                     <li><a href="page-about.html" title="">About</a></li>
                     <li><a href="page-contact.html" title="">Contact</a></li>
-                    <li><a href="{% url "admin:index" %}" title="">Admin</a></li>
+                    {% if request.user.is_staff %}
+                        <li><a href="{% url "admin:index" %}" title="">Admin Panel</a></li>
+                    {% endif %}
                 </ul> <!-- end header__nav -->
 
                 <ul class="header__social">
@@ -119,16 +110,13 @@
             <a href="#0" class="header__menu-toggle">
                 <span>Menu</span>
             </a>
-
+            
         </header> <!-- end s-header -->
-
 
         <!-- search
         ================================================== -->
         <div class="s-search">
-
             <div class="search-block">
-    
                 <form role="search" method="get" class="search-form" action="{% url 'blog:post_search' %}">
                     <label>
                         <span class="hide-content">Search for:</span>
@@ -141,9 +129,7 @@
                     </label>
                     <input type="submit" class="search-submit" value="Search">
                 </form>
-    
                 <a href="#0" title="Close Search" class="search-close">Close</a>
-    
             </div>  <!-- end search-block -->
 
             <!-- search modal trigger -->
@@ -155,12 +141,10 @@
 
         </div> <!-- end s-search -->
 
-
         <!-- site content
         ================================================== -->
         {% block content %}{% endblock  %}
         <!-- end s-content --> 
-
 
         <!-- footer
         ================================================== -->
@@ -168,12 +152,11 @@
             <div class="row">
                 <div class="column large-full footer__content">
                     <div class="footer__copyright">
-                        <span>© Copyright Typerite 2021</span> 
-                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                        <span>© Copyright Verum 2026</span> 
+                        <span>Developed by <a href="https://github.com/kryptxnite">kryptxnite</a></span>
                     </div>
                 </div>
             </div>
-
             <div class="go-top">
                 <a class="smoothscroll" title="Back to Top" href="#top"></a>
             </div>
