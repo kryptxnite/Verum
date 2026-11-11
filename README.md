@@ -20,7 +20,7 @@
 
 * **Backend:** Django 5
 * **Database:** PostgreSQL
-* **Frontend:** Typeright template by Styleshout (HTML/CSS/JS)
+* **Frontend:** Typerite template by Styleshout (HTML/CSS/JS)
 * **ORM:** Django Models
 * **Admin:** Full-featured Django Admin
 * **Authentication:** Admin-only login
@@ -103,5 +103,11 @@ python manage.py runserver
 * All backend code written from scratch (except frontend template)
 * Clean code and structured architecture
 
+---
+
+## 🔹 Credits
+
+* Frontend design: [Typerite](https://styleshout.com/free-templates/typerite/) free HTML template by [StyleShout](https://styleshout.com/), used and modified under StyleShout's template license (attribution required).
+* Backend (Django models, views, admin, search, comments): written by me.
 ---
 
