@@ -108,6 +108,11 @@ python manage.py runserver
 ## 🔹 Credits
 
 * Frontend design: [Typerite](https://styleshout.com/free-templates/typerite/) free HTML template by [StyleShout](https://styleshout.com/), used and modified under StyleShout's template license (attribution required).
+* Attribution is also shown on the site's About page.
 * Backend (Django models, views, admin, search, comments): written by me.
+
 ---
 
+## 🔹 Roadmap
+
+See [ROADMAP.md](ROADMAP.md) for planned work.
